@@ -1,7 +1,6 @@
 #inventar{
     width: 50%;
     height: 80%;
-    background: black;
     position: absolute;
     left: 0;
     top: 0;
@@ -26,4 +25,17 @@
     left: 0;
     top: 80%;
     margin: 0;
+}
+#inventar-table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
 }

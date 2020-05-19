@@ -1,0 +1,10 @@
+// output data of each row
+    echo "<table id='inventar-table'>";
+    echo "<tr>";
+    echo "<th> Strichcode </th>";
+    echo "<th> Name </th>";
+    echo "<th> Hersteller </th>";
+    echo "<th> Lagerplatz </th>";
+    echo "</tr>";
+
+    echo "</table>";
