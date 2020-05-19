@@ -1,3 +1,6 @@
+<?php
+if (!session_id()) session_start();
+?>
 <html lang="de">
 <head>
     <style>
@@ -14,6 +17,9 @@ if ($inventory->reload()) {
     echo $inventory->getTable();
 }else{
     echo "error";
+}
+if(!isset($_SESSION['inventory'])) {
+    $_SESSION['inventory'] = $inventory;
 }
 
 

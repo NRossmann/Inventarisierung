@@ -30,6 +30,7 @@ class Inventory
                 $item = new invItem();
                 $item->setId($row["id"]);
                 $item->setStrichcode($row["strichcode"]);
+                $item->setMenge($row["menge"]);
                 $item->setName($row["name"]);
                 $item->setHersteller($row["hersteller"]);
                 $item->setLagerplatz($row["lagerplatz"]);
@@ -50,6 +51,7 @@ class Inventory
         $ouput = $ouput . "<table id='inventar-table'>";
         $ouput = $ouput . "<tr>";
         $ouput = $ouput . "<th> Strichcode </th>";
+        $ouput = $ouput . "<th> Menge </th>";
         $ouput = $ouput . "<th> Name </th>";
         $ouput = $ouput . "<th> Hersteller </th>";
         $ouput = $ouput . "<th> Lagerplatz </th>";

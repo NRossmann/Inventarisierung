@@ -6,6 +6,7 @@ class invItem
     //Properties
     public $id;
     public $strichcode;
+    public $menge;
     public $name;
     public $hersteller;
     public $lagerplatz;
@@ -24,6 +25,14 @@ class invItem
     public function setStrichcode($strichcode)
     {
         $this->strichcode = $strichcode;
+    }
+
+    /**
+     * @param mixed $menge
+     */
+    public function setMenge($menge)
+    {
+        $this->menge = $menge;
     }
 
     /**
@@ -53,6 +62,7 @@ class invItem
     public function getTableRow(){
         $output = "";
         $output = $output . "<tr>";
+        $output = $output . "<td> " . $this->strichcode . "</td>";
         $output = $output . "<td> " . $this->strichcode . "</td>";
         $output = $output . "<td> " . $this->name . "</td>";
         $output = $output . "<td> " . $this->hersteller . "</td>";
