@@ -35,12 +35,12 @@
     border-collapse: collapse;
     width: 100%;
 }
-td, th{
+.inventar-table-td, .inventar-table-th{
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
-tr:nth-child(even) {
+.inventar-table-tr:nth-child(even) {
     background-color: #dddddd;
 }
 iframe{

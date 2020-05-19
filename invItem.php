@@ -61,12 +61,12 @@ class invItem
 
     public function getTableRow(){
         $output = "";
-        $output = $output . "<tr>";
-        $output = $output . "<td> " . $this->strichcode . "</td>";
-        $output = $output . "<td> " . $this->strichcode . "</td>";
-        $output = $output . "<td> " . $this->name . "</td>";
-        $output = $output . "<td> " . $this->hersteller . "</td>";
-        $output = $output . "<td> " . $this->lagerplatz . "</td>";
+        $output = $output . "<tr class='inventar-table-tr'>";
+        $output = $output . "<td class='inventar-table-td'> " . $this->strichcode . "</td>";
+        $output = $output . "<td class='inventar-table-td'> " . $this->strichcode . "</td>";
+        $output = $output . "<td class='inventar-table-td'> " . $this->name . "</td>";
+        $output = $output . "<td class='inventar-table-td'> " . $this->hersteller . "</td>";
+        $output = $output . "<td class='inventar-table-td'> " . $this->lagerplatz . "</td>";
         $output = $output . "</tr>";
 
         return $output;

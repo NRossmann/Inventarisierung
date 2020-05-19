@@ -1,25 +1,14 @@
 <?php
 require("invItem.php");
-
+$inventory = new Inventory();
 class Inventory
 {
     private $inventory = array();
 
     public function reload()
     {
-        //MySQL Variablen
-        $servername = "localhost";
-        $username = "d0326886";
-        $password = "8K6qhAHw63Qv72nx";
-        $dbname = "d0326886";
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        $conn = $this->getMYSQLConn();
 
         //Get Data from Table
         $sql = "SELECT * FROM inventar";
@@ -46,15 +35,33 @@ class Inventory
         return $ouput;
     }
 
+    private function getMYSQLConn(){
+        //MySQL Variablen
+        $servername = "localhost";
+        $username = "d0326886";
+        $password = "8K6qhAHw63Qv72nx";
+        $dbname = "d0326886";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        return $conn;
+    }
+
     public function getTable(){
         $ouput = "";
         $ouput = $ouput . "<table id='inventar-table'>";
-        $ouput = $ouput . "<tr>";
-        $ouput = $ouput . "<th> Strichcode </th>";
-        $ouput = $ouput . "<th> Menge </th>";
-        $ouput = $ouput . "<th> Name </th>";
-        $ouput = $ouput . "<th> Hersteller </th>";
-        $ouput = $ouput . "<th> Lagerplatz </th>";
+        $ouput = $ouput . "<tr class='inventar-table-tr'>";
+        $ouput = $ouput . "<th class='inventar-table-th'> Strichcode </th>";
+        $ouput = $ouput . "<th class='inventar-table-th'> Menge </th>";
+        $ouput = $ouput . "<th class='inventar-table-th'> Name </th>";
+        $ouput = $ouput . "<th class='inventar-table-th'> Hersteller </th>";
+        $ouput = $ouput . "<th class='inventar-table-th'> Lagerplatz </th>";
         $ouput = $ouput . "</tr>";
 
         foreach ($this->inventory as $item){
@@ -63,5 +70,13 @@ class Inventory
 
         $ouput = $ouput . "</table>";
         return $ouput;
+    }
+
+    public function newStrichcode(){
+        $conn = $this->getMYSQLConn();
+        $sql = "select strichcode from inventar ORDER BY id DESC LIMIT 1;";
+        $result = $conn->query($sql);
+        $lastCode =  $result->fetch_assoc()["strichcode"];
+        return $lastCode + 1;
     }
 }
