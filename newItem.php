@@ -34,17 +34,17 @@
 
                 <li class="wmfg_q">
                     <label class="wmfg_label" for="name">Name:</label>
-                    <input type="text" class="wmfg_text" name="name" id="name" value="sg" />
+                    <input type="text" class="wmfg_text" name="name" id="name" value="" />
                 </li>
 
                 <li class="wmfg_q">
                     <label class="wmfg_label" for="hersteller">Hersteller:</label>
-                    <input type="text" class="wmfg_text" name="hersteller" id="hersteller" value="sdfh" />
+                    <input type="text" class="wmfg_text" name="hersteller" id="hersteller" value="" />
                 </li>
 
                 <li class="wmfg_q">
                     <label class="wmfg_label" for="lagerplatz">Lagerplatz:</label>
-                    <input type="text" class="wmfg_text" name="lagerplatz" id="lagerplatz" value="dfhhfg" />
+                    <input type="text" class="wmfg_text" name="lagerplatz" id="lagerplatz" value="" />
                 </li>
 
                 <li class="wmfg_q">
@@ -59,9 +59,7 @@
 <div id="delete-item">
     <h2>Eintrag löschen</h2>
     <form method="post">
-        <label for="strichcode-d">Strichcode:</label>
-        <input type="number" name="strichcode-d" id="strichcode-d"><br>
-        <input type="submit" name="delete-item" value="Objekt Löschen">
+        0
     </form>
 </div>
 <?php

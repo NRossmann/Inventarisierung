@@ -118,4 +118,54 @@ class Inventory
         $conn->close();
         return $output;
     }
+
+    public function getItem($strichcode){
+        $conn = $this->getMYSQLConn();
+        $sql = "SELECT * FROM `inventar` WHERE strichcode = ${strichcode}";
+        $result = $conn->query($sql);
+        $inv = array();
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+
+                $item = new invItem();
+                $item->setStrichcode($row["strichcode"]);
+                $item->setMenge($row["menge"]);
+                $item->setName($row["name"]);
+                $item->setHersteller($row["hersteller"]);
+                $item->setLagerplatz($row["lagerplatz"]);
+
+                //Item Objekt zu Array
+                $inv = $item;
+            }
+        }else{
+            $conn->close();
+            return false;
+        }
+        $conn->close();
+        return $this->getTablefromInv($inv);
+    }
+
+
+    private function getTablefromInv($inv){
+        $ouput = "";
+        $ouput = $ouput . "<table id='inventar-table'>";
+        $ouput = $ouput . "<tr class='inventar-table-tr'>";
+        $ouput = $ouput . "<th class='inventar-table-th'> Strichcode </th>";
+        $ouput = $ouput . "<th class='inventar-table-th'> Menge </th>";
+        $ouput = $ouput . "<th class='inventar-table-th'> Name </th>";
+        $ouput = $ouput . "<th class='inventar-table-th'> Hersteller </th>";
+        $ouput = $ouput . "<th class='inventar-table-th'> Lagerplatz </th>";
+        $ouput = $ouput . "</tr>";
+
+        if (is_array($inv)) {
+            foreach ($inv as $item) {
+                $ouput = $ouput . $item->getTableRow();
+            }
+        } else {
+            $ouput = $ouput . $inv->getTableRow();
+        }
+
+        $ouput = $ouput . "</table>";
+        return $ouput;
+    }
 }

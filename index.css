@@ -46,6 +46,7 @@
 iframe{
     border: none;
     overflow: scroll;
+    height: 80%;
 }
 .index-header{
     margin-left: 5%;
@@ -60,5 +61,5 @@ iframe{
     width: 50%;
 }
 body{
-    overflow: auto;
+    margin: 0; height: 99%; overflow: auto;
 }
