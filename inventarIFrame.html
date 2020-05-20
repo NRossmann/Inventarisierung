@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        @import "index.css";
+    </style>
+</head>
+<body>
+<div id="inventar-iframe"></div>
+<script>
+    function reload() {
+        $(document).ready(function () {
+            $.get("inventar.php", function (data) {
+                $("#inventar-iframe").html(data);
+            });
+        });
+    }
+    setInterval(reload, 100);
+</script>
+</body>
+</html>

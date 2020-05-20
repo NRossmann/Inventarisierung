@@ -45,7 +45,20 @@
 }
 iframe{
     border: none;
+    overflow: scroll;
 }
 .index-header{
     margin-left: 5%;
+}
+.wmfg_label{
+    width: 50%;
+}
+.wmfg_text{
+    width: 50%;
+}
+.wmfg_layout_0{
+    width: 50%;
+}
+body{
+    overflow: auto;
 }

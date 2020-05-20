@@ -4,7 +4,6 @@
 class invItem
 {
     //Properties
-    public $id;
     public $strichcode;
     public $menge;
     public $name;
@@ -12,14 +11,7 @@ class invItem
     public $lagerplatz;
 
     //setters
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-    /**
+    /*
      * @param mixed $strichcode
      */
     public function setStrichcode($strichcode)
@@ -63,7 +55,7 @@ class invItem
         $output = "";
         $output = $output . "<tr class='inventar-table-tr'>";
         $output = $output . "<td class='inventar-table-td'> " . $this->strichcode . "</td>";
-        $output = $output . "<td class='inventar-table-td'> " . $this->strichcode . "</td>";
+        $output = $output . "<td class='inventar-table-td'> " . $this->menge . "</td>";
         $output = $output . "<td class='inventar-table-td'> " . $this->name . "</td>";
         $output = $output . "<td class='inventar-table-td'> " . $this->hersteller . "</td>";
         $output = $output . "<td class='inventar-table-td'> " . $this->lagerplatz . "</td>";

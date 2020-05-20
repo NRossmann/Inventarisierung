@@ -1,12 +1,4 @@
 
-<html lang="de">
-<head>
-    <style>
-        @import "index.css";
-    </style>
-    <title></title>
-</head>
-<body>
 <?php
 require("Inventory.php");
 
@@ -14,12 +6,5 @@ require("Inventory.php");
 if ($inventory->reload()) {
     echo $inventory->getTable();
 }else{
-    echo "error";
+    echo "Keine Objekte in der Datenbank.";
 }
-
-
-
-
-?>
-</body>
-</html>

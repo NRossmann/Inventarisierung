@@ -1,9 +1,11 @@
 <?php
 require("invItem.php");
 $inventory = new Inventory();
+
 class Inventory
 {
     private $inventory = array();
+
 
     public function reload()
     {
@@ -17,7 +19,6 @@ class Inventory
             while ($row = $result->fetch_assoc()) {
                 //Create Item Objekt
                 $item = new invItem();
-                $item->setId($row["id"]);
                 $item->setStrichcode($row["strichcode"]);
                 $item->setMenge($row["menge"]);
                 $item->setName($row["name"]);
@@ -74,9 +75,47 @@ class Inventory
 
     public function newStrichcode(){
         $conn = $this->getMYSQLConn();
-        $sql = "select strichcode from inventar ORDER BY id DESC LIMIT 1;";
+        $sql = "select strichcode from inventar ORDER BY strichcode DESC LIMIT 1;";
         $result = $conn->query($sql);
         $lastCode =  $result->fetch_assoc()["strichcode"];
+        $conn->close();
         return $lastCode + 1;
+    }
+
+    public function newItem($strichcode, $menge, $name, $hersteller, $lagerplatz){
+        $newItem = new invItem();
+        $newItem->setStrichcode($strichcode);
+        $newItem->setMenge($menge);
+        $newItem->setName($name);
+        $newItem->setHersteller($hersteller);
+        $newItem->setLagerplatz($lagerplatz);
+
+        array_push($this->inventory, $newItem);
+
+        $conn = $this->getMYSQLConn();
+        $sql = "INSERT INTO `inventar`(`strichcode`, `menge`, `name`, `hersteller`, `lagerplatz`) VALUES (${strichcode},${menge},'${name}','${hersteller}','${lagerplatz}')";
+
+        if ($conn->query($sql) === TRUE) {
+            $output = "New record created successfully";
+        } else {
+            $output = "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
+
+        return $output;
+    }
+
+    public function deleteItem($strichcode){
+        $conn = $this->getMYSQLConn();
+        $sql = "DELETE FROM `inventar` WHERE strichcode = ${strichcode}";
+        if ($conn->query($sql) === TRUE) {
+            $output = "Record deleted successfully";
+        } else {
+            $output = "Error deleting record: " . $conn->error;
+        }
+
+        $conn->close();
+        return $output;
     }
 }
