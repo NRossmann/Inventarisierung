@@ -59,7 +59,9 @@
 <div id="delete-item">
     <h2>Eintrag löschen</h2>
     <form method="post">
-        0
+        <label for="strichcode-d">Strichcode</label>
+        <input type="number" name="strichcode-d" id="strichcode-d"><br>
+        <input type="submit" name="delete-item" value="Objekt löschen">
     </form>
 </div>
 <?php
